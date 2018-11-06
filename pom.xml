@@ -145,4 +145,10 @@
         </plugins>
     </build>
 
+ <developers>
+  <developer>
+   <name>Bruno Santana</name>
+   <email>farizont@yahoo.com.br</email>
+  </developer>
+ </developers>
 </project>
