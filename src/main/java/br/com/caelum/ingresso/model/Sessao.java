@@ -40,6 +40,14 @@ public class Sessao{
 	public LocalTime getHorario() {
 		return horario;
 	}
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public void setHorario(LocalTime horario) {
 		this.horario = horario;
 	}
