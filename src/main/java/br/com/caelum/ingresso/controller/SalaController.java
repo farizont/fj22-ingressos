@@ -26,7 +26,7 @@ import br.com.caelum.ingresso.model.Sala;
 public class SalaController {
 
 	@Autowired
-	private	SessaoDao	sessaoDao;
+	private SessaoDao sessaoDao;
 	
     @Autowired
     private SalaDao salaDao;
@@ -44,9 +44,6 @@ public class SalaController {
 
         return modelAndView;
     }
-
-
-
 
     @PostMapping("/admin/sala")
     @Transactional
@@ -76,7 +73,7 @@ public class SalaController {
         Sala sala = salaDao.findOne(id);
         ModelAndView view = new ModelAndView("sessao/lista");
         view.addObject("sala", sala);
-        view.addObject("sessoes",	sessaoDao.buscaSessoesDaSala(sala));
+        view.addObject("sessoes", sessaoDao.buscaSessoesDaSala(sala));
 
         return view;
     }
