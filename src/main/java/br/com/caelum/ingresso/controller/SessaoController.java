@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,6 +60,8 @@ public class SessaoController{
 			sessaoDao.save(sessao);
 			return	new	ModelAndView("redirect:/admin/sala/"	+	form.getSalaId()	+	"/sessoes");
 		}
+		
+		result.addError(new FieldError("sessaoFrom","horario","Jä existe uma sessão no horário informado"));
 		
 		return	form(form.getSalaId(),	form);
 	}
