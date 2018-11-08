@@ -24,7 +24,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Sala {
 
 	
-	private BigDecimal preco;
+	private BigDecimal preco = BigDecimal.ZERO;
 	
     @Id
     @GeneratedValue
