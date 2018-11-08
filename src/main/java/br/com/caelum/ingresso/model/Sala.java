@@ -1,10 +1,21 @@
 package br.com.caelum.ingresso.model;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-import javax.persistence.*;
-import java.util.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * Created by nando on 03/03/17.
@@ -12,6 +23,9 @@ import java.util.stream.Collectors;
 @Entity
 public class Sala {
 
+	
+	private BigDecimal preco;
+	
     @Id
     @GeneratedValue
     private Integer id;
@@ -29,8 +43,9 @@ public class Sala {
 
     }
 
-    public Sala(String nome) {
-        this.nome = nome;
+    public Sala(String nome, BigDecimal preco){
+		this.nome = nome;
+		this.preco = preco;
     }
 
     public Integer getId() {
@@ -49,7 +64,6 @@ public class Sala {
         this.nome = nome;
     }
 
-
     public void add(Lugar lugar) {
         this.lugares.add(lugar);
     }
@@ -60,6 +74,14 @@ public class Sala {
 
     public void setLugares(List<Lugar> lugares) {
         this.lugares = lugares;
+    }
+    
+    public BigDecimal getPreco(){
+    	return preco.setScale(2, RoundingMode.HALF_UP);
+    }
+    
+    public void setPreco(BigDecimal preco){
+    	this.preco = preco;
     }
 
     public Map<String, List<Lugar>> getMapaDeLugares() {
